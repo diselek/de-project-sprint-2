@@ -14,8 +14,7 @@ CREATE INDEX shipping_country_rates_index ON public.shipping_country_rates(shipp
 
 -- create "shipping_agreement"
 CREATE TABLE public.shipping_agreement(
-  agreement_id SERIAL PRIMARY KEY,
-  agreementid int,
+  	agreement_id SERIAL PRIMARY KEY,
 	agreement_number text,
 	agreement_rate numeric(2,2),
 	agreement_commission numeric(2,2)
@@ -24,7 +23,7 @@ CREATE INDEX shipping_agreement_index ON public.shipping_agreement(agreement_id)
 
 -- create "shipping_transfer"
 CREATE TABLE public.shipping_transfer(
-  transfer_type_id SERIAL,
+  	transfer_type_id SERIAL PRIMARY KEY,
 	transfer_type TEXT,
 	transfer_model TEXT,
 	shipping_transfer_rate NUMERIC(4,3)
@@ -39,7 +38,7 @@ create table public.shipping_info (
 	shipping_plan_datetime TIMESTAMP,
 	transfer_type_id INT,
 	shipping_country_id INT,
-	agreementid int,
+	agreement_id int,
 	primary key (shipping_id),
 	FOREIGN KEY  (transfer_type_id) REFERENCES shipping_transfer (transfer_type_id) ON UPDATE cascade,
 	FOREIGN KEY (shipping_country_id) REFERENCES public.shipping_country_rates (shipping_country_id) ON UPDATE cascade,
